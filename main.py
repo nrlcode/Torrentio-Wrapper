@@ -53,14 +53,14 @@ def check_for_season(torrents):
 
 def multiply_file_size(title):
     #print(text)
-    if re.search(r"\d+\.?\d+ GB", title) is not None:
-        file_size_str = re.search(r"\d+\.?\d+ GB", title).group(0)
+    if re.search(r"\d+(?:\.\d+)?\sGB", title) is not None:
+        file_size_str = re.search(r"\d+(?:\.\d+)?\sGB", title).group(0)
         file_size = float(file_size_str.replace(" GB", ""))
         file_size_modified = file_size * number_of_episodes
-        file_size_modified_string = str(file_size_modified) + " GB"
+        file_size_modified_string = str(round(file_size_modified,2)) + " GB"
         return re.sub(file_size_str, file_size_modified_string, title)
-    elif re.search(r"\d+\.?\d+ MB", title) is not None:
-        file_size_str = re.search(r"\d+\.?\d+ MB", title).group(0)
+    elif re.search(r"\d+(?:\.\d+)?\sMB", title) is not None:
+        file_size_str = re.search(r"\d+(?:\.\d+)?\sMB", title).group(0)
         file_size = float(file_size_str.replace(" MB", ""))
         file_size_modified = file_size * number_of_episodes
         if file_size_modified < 1000:
