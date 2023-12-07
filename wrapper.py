@@ -8,7 +8,7 @@ tmdb_id = 0
 imdb_id = 0
 season = 1
 number_of_episodes = 1
-TMDB_API_KEY = os.environ.get(TMDB_API_KEY)
+TMDB_API_KEY = os.getenv('TMDB_API_KEY')
 
 #find_tmdb_id_URL = f"https://api.themoviedb.org/3/find/{imdb_id}?api_key={TMDB_API_KEY}&external_source=imdb_id"
 
@@ -110,4 +110,4 @@ def search_torrents_handler():
     return jsonify(torrents)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8001)
+    app.run(host="0.0.0.0", port=8000)
