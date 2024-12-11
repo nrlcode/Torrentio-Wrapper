@@ -72,13 +72,16 @@ def multiply_file_size(title):
             return re.sub(file_size_str, file_size_modified_string, title)
 
 
+headers = {
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0"
+}
 
 def get_torrentio_results(query):
     qlength = len(query)+2
     query = str(query)[2:qlength]
     print(query)
     url = "https://torrentio.strem.fun/" + str(query)
-    response = requests.get(url)
+    response = requests.get(url, headers=headers)
     if response.status_code == 200:
         data = json.loads(response.text)
         return data
